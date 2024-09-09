@@ -4,7 +4,7 @@ let p1 = new Promise(function(resolve, reject) {
         if(Math.random() < 0.5) {
             resolve("p1 success");
         } else {
-            reject(new Error("p1 promise rejected"));
+            reject(new Error("p1 timeout promise rejected"));
         }
     }, 500);
 });
@@ -17,15 +17,32 @@ let p2 = new Promise(function(resolve, reject) {
     })
     .then(function() {
         if(Math.random() < 0.5) {
-            console.log("p2 success");
+            //console.log("p2 success");
             return "p2 success";
         } else {
-            throw new Error("p2 error thrown");
+            throw new Error("p2 error thrown after timeout");
         }
 });
 
 
+/*
 p1.then(function(result) {
     console.log(result);
     return p2;
-});
+});*/
+
+/*
+Promise.all([p1, p2])
+    .then(function(results) {console.log(results)})
+    .catch(function(err) {
+        console.log(err);
+    })
+*/
+
+Promise.allSettled([p1, p2])
+    .then(function(results) {console.log(results)})
+    .catch(function(err) {
+        console.log(err);
+    })
+
+
