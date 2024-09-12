@@ -1,6 +1,7 @@
 {
   "name": "javascript",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "bookList.js",
   "scripts": {
@@ -9,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.7.7",
     "full-icu": "^1.4.0"
   }
 }
